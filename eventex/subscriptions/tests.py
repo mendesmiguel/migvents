@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 
-class Subscribe(TestCase):
+class SubscribeTest(TestCase):
     def setUp(self):
         self.resp = self.client.get('/inscricao/')
 
