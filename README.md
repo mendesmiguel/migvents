@@ -1,6 +1,8 @@
 # Migvents
 Events manager
 
+[![Build Status](https://travis-ci.org/mendesmiguel/migvents.svg?branch=master)](https://travis-ci.org/mendesmiguel/migvents)
+
 ## Dependencies
 - Python 3.5
 - Django 1.9
