@@ -1,8 +1,8 @@
 Olá, obrigado por se inscrever.
 
-Nome: {{ name }}
-CPF: {{ cpf }}
-email: {{ email }}
-Telefone: {{ phone }}
+Nome: {{ subscription.name }}
+CPF: {{ subscription.cpf }}
+email: {{ subscription.email }}
+Telefone: {{ subscription.phone }}
 
 Obrigado!
