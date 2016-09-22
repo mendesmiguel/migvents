@@ -1,15 +1,15 @@
-import unittest
-
 from django.core import mail
 from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
+from django.shortcuts import resolve_url as r
+
+INSCRICAO = r('subscriptions:new')
 
 
 class SubscribeGet(TestCase):
-
     def setUp(self):
-        self.resp = self.client.get('/inscricao/')
+        self.resp = self.client.get(INSCRICAO)
 
     def test_get(self):
         """Get /inscricao/ must return status code 200"""
@@ -43,12 +43,11 @@ class SubscribeGet(TestCase):
 
 
 class SubscribeValidPost(TestCase):
-
     def setUp(self):
         data = dict(name="Mancebo Legal", cpf='12345678901',
                     email='mancebo@legal.me', phone='21 99876-5432')
 
-        self.resp = self.client.post('/inscricao/', data)
+        self.resp = self.client.post(INSCRICAO, data)
 
     def test_post(self):
         """Valid POST redirect to /inscricao/1"""
@@ -63,9 +62,8 @@ class SubscribeValidPost(TestCase):
 
 
 class SubscribeInvalidPost(TestCase):
-
     def setUp(self):
-        self.resp = self.client.post('/inscricao/', {})
+        self.resp = self.client.post(INSCRICAO, {})
 
     def test_post(self):
         self.assertEqual(200, self.resp.status_code)
