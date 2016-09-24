@@ -20,3 +20,6 @@ class SubscriptionModelTest(TestCase):
 
     def test_str(self):
         self.assertEqual('Mancebo Legal', str(self.obj))
+
+    def test_paid_default_false(self):
+        self.assertEqual(False, self.obj.paid)
