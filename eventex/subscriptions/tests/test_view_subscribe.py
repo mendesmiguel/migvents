@@ -4,12 +4,12 @@ from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
 from django.shortcuts import resolve_url as r
 
-INSCRICAO = r('subscriptions:new')
+NEW_SUBSCRIPTION = r('subscriptions:new')
 
 
 class SubscribeGet(TestCase):
     def setUp(self):
-        self.resp = self.client.get(INSCRICAO)
+        self.resp = self.client.get(NEW_SUBSCRIPTION)
 
     def test_get(self):
         """Get /inscricao/ must return status code 200"""
@@ -47,7 +47,7 @@ class SubscribeValidPost(TestCase):
         data = dict(name="Mancebo Legal", cpf='12345678901',
                     email='mancebo@legal.me', phone='21 99876-5432')
 
-        self.resp = self.client.post(INSCRICAO, data)
+        self.resp = self.client.post(NEW_SUBSCRIPTION, data)
 
     def test_post(self):
         """Valid POST redirect to /inscricao/1"""
@@ -63,7 +63,7 @@ class SubscribeValidPost(TestCase):
 
 class SubscribeInvalidPost(TestCase):
     def setUp(self):
-        self.resp = self.client.post(INSCRICAO, {})
+        self.resp = self.client.post(NEW_SUBSCRIPTION, {})
 
     def test_post(self):
         self.assertEqual(200, self.resp.status_code)
@@ -81,3 +81,12 @@ class SubscribeInvalidPost(TestCase):
 
     def test_dont_save_subscription(self):
         self.assertFalse(Subscription.objects.exists())
+
+
+class TemplateRegressionTest(TestCase):
+
+    def test_template_has_non_field_errors(self):
+        invalid_data = dict(name='Mancebo Legal', cpf='12345678901')
+        response = self.client.post(NEW_SUBSCRIPTION, invalid_data)
+
+        self.assertContains(response, '<ul class="errorlist nonfield">')
