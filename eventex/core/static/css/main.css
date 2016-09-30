@@ -372,4 +372,13 @@ section header h2 {
     padding: 7px 0 7px;;
 }
 
+.speakers h2 {
+    text-transform: uppercase;
+}
+
+.speakers img {
+    width: 200px;
+    border-radius: 100%;
+}
+
 /* Fim Customização */
