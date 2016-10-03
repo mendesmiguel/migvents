@@ -1,0 +1,24 @@
+[
+{
+    "model": "core.speaker",
+    "pk": 2,
+    "fields": {
+        "name": "Alan Turing",
+        "slug": "alan-turing",
+        "website": "http://hbn.link/turing-site",
+        "photo": "http://hbn.link/turing-pic",
+        "description": "Famoso Turing.\r\n\r\nGrande cientista.\r\n\r\nAjudou na guerra."
+    }
+},
+{
+    "model": "core.speaker",
+    "pk": 3,
+    "fields": {
+        "name": "Grace Hopper",
+        "slug": "grace-hopper",
+        "website": "http://hbn.link/hopper-site",
+        "photo": "http://hbn.link/hopper-pic",
+        "description": "Grace is a programmer.\r\n\r\nFamous for building compilers."
+    }
+}
+]

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}500. Erro interno inesperado{% endblock title %}
+
+{% block content %}
+    <!-- OVERVIEW -->
+    <section>
+        <div class="speakers content row padding-bottom-3 desktop-8 container">
+            <h2>
+                <a href="{{ speaker.website }}">{{ speaker.name }}</a>
+            </h2>
+            <img class="hopper" src="{{ speaker.photo }}" alt="">
+            <p>
+                {{ speaker.description | linebreaks }}
+            </p>
+        </div>
+    </section>
+{% endblock content %}
